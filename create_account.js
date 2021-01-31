@@ -4,6 +4,7 @@ const {
 
 const { Bip39, Random } = require('@iov/crypto');
 
+
 require('dotenv').config();
 
 const main = async () => {
@@ -28,6 +29,10 @@ const main = async () => {
   console.log('mnemonic: ', mnemonic);
   console.log('address: ', accAddress);
   console.log('account: ', account);
+
+  const fs = require("fs")
+  fs.appendFileSync("./.env", `MNEMONIC='${mnemonic}'\n`)
+  fs.appendFileSync("./.env", `ADDRESS='${accAddress}'`)
 };
 
 main().catch((err) => {

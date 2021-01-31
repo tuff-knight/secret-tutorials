@@ -5,6 +5,14 @@ const { CosmWasmClient } = require('secretjs');
 require('dotenv').config();
 
 const main = async () => {
+  if (!process.argv || process.argv.length != 3) {
+    console.log("wrong command or missing apiKey")
+    return
+  }
+  const fs = require("fs")
+  const apiKey = process.argv[2]
+  fs.writeFileSync("./.env", `SECRET_REST_URL='https://secret-holodeck-2--lcd--full.datahub.figment.io/apikey/${apiKey}/'\n`)
+  fs.appendFileSync("./.env", `SECRET_CHAIN_ID=holodeck-2\n`)
   // Create connection to DataHub Secret Network node
   const client = new CosmWasmClient(process.env.SECRET_REST_URL);
 

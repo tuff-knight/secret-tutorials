@@ -19,9 +19,9 @@ const main = async () => {
   console.log('Latest block: ', blocksLatest);
 
   // 3. Query account
-const account = await client.getAccount(process.env.ADDRESS)
-  .catch((err) => { throw new Error(`Could not fetch account: ${err}`); });
-console.log('Account: ', account);
+  const account = await client.getAccount(process.env.ADDRESS)
+    .catch((err) => { throw new Error(`Could not fetch account: ${err}`); });
+  console.log('Account: ', process.env.ADDRESS, account);
 }
 
 main().catch((err) => {

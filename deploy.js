@@ -1,9 +1,7 @@
 const {
   EnigmaUtils, Secp256k1Pen, SigningCosmWasmClient, pubkeyToAddress, encodeSecp256k1Pubkey,
 } = require('secretjs');
-
-const fs = require('fs');
-
+const fs = require("fs")
 // Load environment variables
 require('dotenv').config();
 
@@ -91,6 +89,9 @@ const main = async () => {
     .catch((err) => { throw new Error(`Could not query contract: ${err}`); });
 
   console.log(`New Count=${response.count}`);
+
+
+  fs.renameSync("./.env", `./envs/env_${new Date().getTime()}`)
 };
 
 main().catch((err) => {

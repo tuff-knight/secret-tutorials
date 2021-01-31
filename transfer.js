@@ -33,6 +33,7 @@ const main = async () => {
     // optional memo
     const memo = 'sendTokens example';
 
+    console.log("rcpt", rcpt)
     // Send 1 SCRT / 1000000 uscrt
     const sent = await client.sendTokens(rcpt, [{ amount: '1000000', denom: 'uscrt' }], memo)
         .catch((err) => { throw new Error(`Could not send tokens: ${err}`); });
